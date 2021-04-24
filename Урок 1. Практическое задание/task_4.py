@@ -25,3 +25,54 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+from contextlib import suppress
+
+
+def check1(cred, login, passw):
+    print(f'Проверка {login} {passw}')
+    with suppress(KeyError):
+        if not cred[login][1]:
+            print('Пройдите авторизацию')
+            return False
+        return cred[login][0] == passw
+    return False
+
+
+def check2(cred: dict, login, passw):
+    print(f'Проверка {login} {passw}')
+    for k, v in cred.items():
+        if k == login:
+            if not cred[login][1]:
+                print('Пройдите авторизацию')
+                return False
+            return cred[login][0] == passw
+    return False
+
+
+if __name__ == '__main__':
+    credentials = {
+        'ivan': ('pass', True),
+        'vlad': ('pass1', False),
+        'marad': ('pass2', True),
+        'zagad': ('pass3', True),
+        'bayad': ('pass4', False),
+        'kirgad': ('pass5', True),
+        'zambad': ('pass6', False),
+        'serad': ('pass7', True),
+        'varnad': ('pas8s', False),
+        'kurgad': ('pas9s', True)
+    }
+    print('Проверки check1')
+    print(check1(credentials, 'ivan', 'pass'))
+    print(check1(credentials, 'igor', 'megapass'))
+    print(check1(credentials, 'zambad', 'pass6'))
+    print(check1(credentials, 'kurgad', 'pass'))
+    print(check1(credentials, 'serad', 'pass7'))
+
+    print()
+    print('Проверки check2')
+    print(check1(credentials, 'ivan', 'pass'))
+    print(check1(credentials, 'igor', 'megapass'))
+    print(check1(credentials, 'zambad', 'pass6'))
+    print(check1(credentials, 'kurgad', 'pass'))
+    print(check1(credentials, 'serad', 'pass7'))

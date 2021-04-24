@@ -16,3 +16,27 @@
 Примечание:
 Прошу вас внимательно читать ТЗ и не забыть выполнить все пункты.
 """
+from random import randint
+
+
+def min_n_pow2(lst):                                # O(n^2)
+    for i in range(len(lst) - 1, -1, -1):           # O(n)
+        for j in range(len(lst) - 1, -1, -1):       # O(n)
+            if lst[j] < lst[i]:                     # O(1)
+                lst[i], lst[j] = lst[j], lst[i]     # O(1)
+    print(lst[0])
+
+
+def min_n(lst):                                     # O(n)
+    min_ = lst[0]                                   # O(1)
+    for i in lst[1:]:                               # O(n)
+        if i < min_:                                # O(1)
+            min_ = i                                # O(1)
+    print(min_)                                     # O(1)
+
+
+if __name__ == '__main__':
+    range_ = [randint(1, 100) for i in range(10)]
+    print(range_)
+    min_n_pow2(range_)
+    min_n(range_)
