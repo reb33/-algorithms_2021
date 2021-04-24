@@ -28,25 +28,25 @@
 from contextlib import suppress
 
 
-def check1(cred, login, passw):
-    print(f'Проверка {login} {passw}')
-    with suppress(KeyError):
-        if not cred[login][1]:
-            print('Пройдите авторизацию')
-            return False
-        return cred[login][0] == passw
-    return False
+def check1(cred, login, passw):                  # O(1) - общая сложность
+    print(f'Проверка {login} {passw}')           # O(1)
+    with suppress(KeyError):                     # O(1)
+        if not cred[login][1]:                   # O(1)
+            print('Пройдите авторизацию')        # O(1)
+            return False                         # O(1)
+        return cred[login][0] == passw           # O(1)
+    return False                                 # O(1)
 
 
-def check2(cred: dict, login, passw):
-    print(f'Проверка {login} {passw}')
-    for k, v in cred.items():
-        if k == login:
-            if not cred[login][1]:
-                print('Пройдите авторизацию')
-                return False
-            return cred[login][0] == passw
-    return False
+def check2(cred: dict, login, passw):            # O(n) - общая сложность
+    print(f'Проверка {login} {passw}')           # O(1)
+    for k, v in cred.items():                    # O(n)
+        if k == login:                           # O(1)
+            if not cred[login][1]:               # O(1)
+                print('Пройдите авторизацию')    # O(1)
+                return False                     # O(1)
+            return cred[login][0] == passw       # O(1)
+    return False                                 # O(1)
 
 
 if __name__ == '__main__':
@@ -76,3 +76,5 @@ if __name__ == '__main__':
     print(check1(credentials, 'zambad', 'pass6'))
     print(check1(credentials, 'kurgad', 'pass'))
     print(check1(credentials, 'serad', 'pass7'))
+
+#     более эффективное решение 1
