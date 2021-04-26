@@ -43,5 +43,5 @@ def try_guess(attempts, hidden_number):
 
 
 if __name__ == '__main__':
-    hidden_num = randint(-1, 101)
+    hidden_num = randint(0, 100)
     try_guess(1, hidden_num)
