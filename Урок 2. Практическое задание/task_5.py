@@ -21,3 +21,14 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def print_next_chr(pos_table=32, pos_row=1):
+    if pos_table == 128:
+        return
+    print(f'{pos_table} - {chr(pos_table)}', end=' ' if pos_row < 10 else '\n')
+    print_next_chr(pos_table + 1, pos_row=pos_row + 1 if pos_row < 10 else 1)
+
+
+if __name__ == '__main__':
+    print_next_chr()

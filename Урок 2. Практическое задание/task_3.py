@@ -22,3 +22,26 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def int_input(input_str) -> int:
+    num = ''
+    while num == '':
+        try:
+            num = input(input_str + '\n')
+            num = int(num)
+        except ValueError:
+            print('введено не число')
+    return num
+
+
+def revert_number(num, reverted='') -> str:
+    reverted += str(num % 10)
+    if num // 10 == 0:
+        return reverted
+    return revert_number(num // 10, reverted)
+
+
+if __name__ == '__main__':
+    x = int_input('введите число')
+    print(f'перевернутое число: {revert_number(x)}')
