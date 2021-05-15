@@ -25,3 +25,56 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+from contextlib import suppress
+
+
+def check1(cred, login, passw):                  # O(1) - общая сложность
+    print(f'Проверка {login} {passw}')           # O(1)
+    with suppress(KeyError):                     # O(1)
+        if not cred[login][1]:                   # O(1)
+            print('Пройдите авторизацию')        # O(1)
+            return False                         # O(1)
+        return cred[login][0] == passw           # O(1)
+    return False                                 # O(1)
+
+
+def check2(cred: dict, login, passw):            # O(n) - общая сложность
+    print(f'Проверка {login} {passw}')           # O(1)
+    for k, v in cred.items():                    # O(n)
+        if k == login:                           # O(1)
+            if not cred[login][1]:               # O(1)
+                print('Пройдите авторизацию')    # O(1)
+                return False                     # O(1)
+            return cred[login][0] == passw       # O(1)
+    return False                                 # O(1)
+
+
+if __name__ == '__main__':
+    credentials = {
+        'ivan': ('pass', True),
+        'vlad': ('pass1', False),
+        'marad': ('pass2', True),
+        'zagad': ('pass3', True),
+        'bayad': ('pass4', False),
+        'kirgad': ('pass5', True),
+        'zambad': ('pass6', False),
+        'serad': ('pass7', True),
+        'varnad': ('pas8s', False),
+        'kurgad': ('pas9s', True)
+    }
+    print('Проверки check1')
+    print(check1(credentials, 'ivan', 'pass'))
+    print(check1(credentials, 'igor', 'megapass'))
+    print(check1(credentials, 'zambad', 'pass6'))
+    print(check1(credentials, 'kurgad', 'pass'))
+    print(check1(credentials, 'serad', 'pass7'))
+
+    print()
+    print('Проверки check2')
+    print(check1(credentials, 'ivan', 'pass'))
+    print(check1(credentials, 'igor', 'megapass'))
+    print(check1(credentials, 'zambad', 'pass6'))
+    print(check1(credentials, 'kurgad', 'pass'))
+    print(check1(credentials, 'serad', 'pass7'))
+
+#     более эффективное решение 1
