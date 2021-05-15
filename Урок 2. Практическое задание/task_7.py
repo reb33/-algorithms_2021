@@ -16,3 +16,26 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def int_input(input_str) -> int:
+    num = ''
+    while num == '':
+        try:
+            num = input(input_str + '\n')
+            num = int(num)
+        except ValueError:
+            print('введено не число')
+    return num
+
+
+def calc_left_part(end, i=1):
+    return i + calc_left_part(end, i+1) if i < end else i
+
+
+if __name__ == '__main__':
+    n = int_input('введите число')
+    left_part = calc_left_part(n)
+    right_part = n * (n + 1) / 2
+    print(f'{left_part} = {right_part}')
+    print(left_part == right_part)

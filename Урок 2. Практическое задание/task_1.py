@@ -28,3 +28,51 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def int_input(input_str) -> int:
+    num = ''
+    while num == '':
+        try:
+            num = input(input_str + '\n')
+            num = int(num)
+        except ValueError:
+            print('введено не число')
+    return num
+
+
+def operator_input() -> str:
+    next_operator = ''
+    while not next_operator:
+        next_operator = input('введите оператор (+, -, *, / или 0 для выхода)\n')
+        if next_operator not in ('+', '-', '*', '/', '0'):
+            print('введен не правильные оператор')
+            next_operator = ''
+    return next_operator
+
+
+def calc(operator):
+    num1 = int_input('введите первое число')
+    num2 = int_input('введите второе число')
+
+    if operator == '/':
+        if num2 == 0:
+            print('деление на ноль запрещено')
+        else:
+            print(f'результат {num1 / num2}')
+    elif operator == '*':
+        print(f'результат {num1 * num2}')
+    elif operator == '+':
+        print(f'результат {num1 + num2}')
+    elif operator == '-':
+        print(f'результат {num1 - num2}')
+
+    next_operator = operator_input()
+    if next_operator == '0':
+        return
+    calc(next_operator)
+
+
+if __name__ == '__main__':
+    operator_ = operator_input()
+    calc(operator_)
