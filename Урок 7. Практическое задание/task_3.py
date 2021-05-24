@@ -45,3 +45,23 @@ for i in
 
 
 """
+from statistics import median
+
+
+def med(lst):
+    return min(el for i, el in enumerate(lst) if len([j for j in lst[:i]+lst[i+1:] if j <= el]) >= len(lst) // 2)
+
+
+def main():
+    print(median([5, 3, 4, 3, 3, 3, 3]))
+    print(med([5, 3, 4, 3, 3, 3, 3]))
+    print(median([3, 4, 3, 3, 5, 3, 3]))
+    print(med([3, 4, 3, 3, 5, 3, 3]))
+    print(median([3, 4, 8, 3, 5, 3, 3, 5, 7, 3, 2, 12, 14, 1, 2]))
+    print(med([3, 4, 8, 3, 5, 3, 3, 5, 7, 3, 2, 12, 14, 1, 2]))
+    print(median([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
+    print(med([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
+
+
+if __name__ == '__main__':
+    main()
