@@ -10,7 +10,7 @@
 2) тема понятна? постарайтесь сделать свою реализацию.
 Вы можете реализовать задачу, например, через ООП или предложить иной подход к решению.
 """
-from collections import Counter, namedtuple
+from collections import Counter
 
 
 class Element:
@@ -26,10 +26,15 @@ class ListEls:
     def __init__(self, counted_vals: dict) -> None:
         self.els = [Element(*el) for el in sorted(counted_vals.items(), key=lambda x: x[1])]
 
-
     def add(self, element=None):
-        for el in enumerate(self.els):
+        for i, el in enumerate(self.els):
             if element.num <= el.num:
+                self.els.insert(i, element)
+                return
+        self.els.append(element)
+
+    def arrange(self):
+        
 
 
 
