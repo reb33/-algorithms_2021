@@ -45,6 +45,7 @@ for i in
 
 
 """
+from random import randint
 from statistics import median
 
 
@@ -62,6 +63,11 @@ def main():
     print(median([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
     print(med([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
 
+    lst = [randint(0, 100) for _ in range(11)]
+    print(lst)
+    print(median(lst))
+    print(med(lst))
+
 
 if __name__ == '__main__':
     main()
@@ -74,3 +80,6 @@ if __name__ == '__main__':
 # 3
 # 22
 # 22
+# [9, 3, 32, 87, 86, 56, 41, 23, 43, 4, 81]
+# 41
+# 41
