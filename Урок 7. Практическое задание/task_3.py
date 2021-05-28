@@ -45,3 +45,42 @@ for i in
 
 
 """
+from random import randint
+from statistics import median
+
+
+def med(lst):
+    return min(el for i, el in enumerate(lst) if len([j for j in lst[:i]+lst[i+1:] if j <= el]) >= len(lst) // 2)
+
+
+def main():
+    print(median([5, 3, 4, 3, 3, 3, 3]))
+    print(med([5, 3, 4, 3, 3, 3, 3]))
+    print(median([3, 4, 3, 3, 5, 3, 3]))
+    print(med([3, 4, 3, 3, 5, 3, 3]))
+    print(median([3, 4, 8, 3, 5, 3, 3, 5, 7, 3, 2, 12, 14, 1, 2]))
+    print(med([3, 4, 8, 3, 5, 3, 3, 5, 7, 3, 2, 12, 14, 1, 2]))
+    print(median([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
+    print(med([1, 8, 17, 43, 76, 22, 66, 55, 14, 99, 3]))
+
+    m = randint(1, 10)
+    lst = [randint(0, 100) for _ in range(2*m+1)]
+    print(lst)
+    print(median(lst))
+    print(med(lst))
+
+
+if __name__ == '__main__':
+    main()
+
+# 3
+# 3
+# 3
+# 3
+# 3
+# 3
+# 22
+# 22
+# [34, 48, 46, 21, 96, 95, 99, 50, 68, 20, 64, 61, 2, 19, 84, 10, 5, 78, 55]
+# 50
+# 50
