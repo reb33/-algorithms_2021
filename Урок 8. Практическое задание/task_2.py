@@ -103,3 +103,18 @@ if __name__ == '__main__':
 
     print('Tree:')
     r.pprint()
+
+# 8
+# None
+# LEFT el must be LESS root arg 8
+# None
+# 12
+# 12
+# 16
+# RIGHT el must be GREATER OR EQUAl root arg 7
+# Tree:
+# 8
+# ..l-7
+# ....l-5
+# ....r-7
+# ..r-16
