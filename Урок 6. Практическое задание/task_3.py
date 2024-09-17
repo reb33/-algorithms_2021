@@ -5,3 +5,24 @@
 Придумать как это решить!
 Есть очень простое решение!
 """
+from memory_profiler import profile
+
+
+def fact(n):
+    return n * fact(n - 1) if n > 2 else n
+
+
+@profile
+def run_fact():
+    print(fact(500))
+
+
+def main():
+    run_fact()
+
+
+if __name__ == '__main__':
+    main()
+
+
+# привызове измерения непосредство на рекурсию, измерение будут производиться перед каждым очередным вызовом
